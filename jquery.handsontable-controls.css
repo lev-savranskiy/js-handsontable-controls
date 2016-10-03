@@ -1,0 +1,111 @@
+/*
+ * jQuery handsontable Controls Widget 0.1
+
+ demo @ http://wap7.ru/folio/handsontable-controls/
+
+
+ * Widget creates
+ * - multiselect  for add show/hide columns
+ * - export to CSV button (Chrome/FF/Opera only)
+ *
+ * Depends:
+ *   - jQuery 1.4.2+
+ *   - jQuery UI 1.8+
+ *   - erichynds multiselect
+ *   - handsontable
+ *
+ *
+ * Dual licensed under the MIT and GPL licenses:
+ *   http://www.opensource.org/licenses/mit-license.php
+ *   http://www.gnu.org/licenses/gpl.html
+ *
+ * Copyright (c) 2015 Lev Savranskiy
+ */
+
+
+.hot-controls {
+    margin: 10px 0;
+    display: inline-block;
+}
+
+.hot-controls * {
+    font-size: 13px;
+}
+
+
+
+.hot-controls button {
+    margin: 0 10px 0 0;
+    /*padding: 2px 5px;*/
+}
+.hot-controls .flatBtn {
+    border: none;
+    cursor: pointer;
+}
+
+.hot-controls .ui-button-text{
+    /*padding: 3px;*/
+    /*margin: 1px;*/
+}
+
+.hot-controls .ui-icon-triangle-1-s {
+    margin: -8px 0 0 56px;
+}
+
+
+
+.hot-controls .ui-menu {
+    position: absolute;
+    width: 130px;
+    z-index: 10001;
+}
+
+.hot-controls .ui-buttonset {
+    display: inline;
+}
+
+
+.hot-controls-excel .ui-button-text {
+    padding: 1px 20px;
+    margin: 3px 0 0 2px;
+    background-repeat: no-repeat;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACXElEQVQ4T42TX0jTURTHv3djP8PU/XFtIklQEFhhD/mwwCJHPTgrFm0RiG1rwy3b7EEK2ourKEMYlLUtBMcW7UGXjEIlCwQTC3LUQxRE/muDWmz9MFyGkd62X232I5ndl3Pu+Z7zudxzzyX4swKBgJcQcia3X8tSSn1Go7H1b43kNn6/nxoMhkL1CAaDWFlZ8VksljwkD+jp6aFmsxnJZBKZkzhQ1ub8iooKsCyLSCSSjfmsVisHyQM8Hg+12WxIpVI8QA6kVCqRSCTAMAz6+/s5iN1ubyVnHzT+Pm6d1X34IeLxOEQiEQcJhUIchFjvN9A7x4cLltsGNPAeG/wnx+12g5hDh2hlsh4z397j4/c5jF4Z5RIbrx4Fu8BCSaWQ717CtYP3eFdTKBTo7OwEae6tp3dPj8LzuBsjr4cw/ymNEmYjviyz2FBchLGOCZzyq+E+0pdvbNaRy+VwuVwgJ27V0T77OCd6n97Ai4lJzMViKNlUjMHLI/iBNJpvN8BzMsIDlJeXw+l0gmi7VDRy/jknaq5rULtrL6ampxGfn0H1tmpUiSrxMvYIveYh3rPKZDK0t7eDNLj20OGOKA449yMtXESRkIG6Ro0PX2fx9tU7RLuj0FyqRajtCa8HUqkUDocDRH2hhm5dViFV9BlLkkXQBQFKhaWo2rIZs7FZMD+FSC5NYeDiGA8gkUjQ0tICUte2g47ffFPwGfed25npxzMeQCwWw2Qygais2/9rkEa6JnmAsrIyNDU1rY6yTqej4XA4+1nWG0pOFwgE0Ov1qwCtVuvNxAt+5zXIvl+AmhG6Gu0M+gAAAABJRU5ErkJggg==');
+}
+
+
+body .hot-controls .ui-widget {
+    padding-bottom: 4px;
+}
+
+
+
+body .hot-controls .ui-widget,
+body .ui-multiselect-header ul{
+    font-size: 11px;
+}
+
+
+body .ui-multiselect-menu input[type="checkbox"] {
+    margin: 0 5px 0 0;
+}
+
+body .ui-multiselect-menu {
+    z-index: 9000;
+}
+
+
+body .ui-multiselect-all {
+    display: none;
+}
+
+
+body .ui-tabs .ui-tabs-panel {
+    padding: 0;
+}
+
+body .ui-multiselect-disabled {
+    display: none;
+}
+
+
+

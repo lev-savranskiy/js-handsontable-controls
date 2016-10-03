@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>Handsontable Controls Plugin </title>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="caniuse-widget-master/css/caniuse.css" />
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+
+</head>
+<body>
+
+
+
+
+<style type="text/css">
+
+    * {
+        font-size: 13px;
+    }
+
+    h3 {
+        font-size: 17px;
+    }
+    h2 {
+        font-size: 15px;
+    }
+    /*.download {*/
+        /*font-size: 20px;*/
+    /*}*/
+
+    .ui-multiselect-all {
+        display: block;
+    }
+
+    .table {
+        width: 99%;
+        margin: 10px 10px 100px 10px;
+    }
+
+    td {
+        border: 1px #ccc solid;
+        padding: 5px;
+        width: 15%;
+    }
+
+    td.descr {
+        width: 40%;
+    }
+
+    #wrapper iframe {
+        height: 800px;
+    }
+
+    .ui-tabs .ui-tabs-nav li.li-title {
+        font-size: 25px;
+        padding: 0 20px;
+    }
+
+    td a {
+        text-decoration: underline;
+    }
+</style>
+<div id="tabs">
+    <ul>
+        <li class="li-title">Handsontable Controls</li>
+        <li><a href="#home">Overview</a></li>
+        <li><a href="#api">API</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#caniuse">CSV download support</a></li>
+        <li><a href="#example1">Example 1 (basic)</a></li>
+        <li><a href="#example2">Example 2 (advanced)</a></li>
+
+    </ul>
+
+
+    <div class="table" id="api">
+    <table>
+        <tr>
+            <th>Option</th>
+            <th>Description</th>
+            <th>Type</th>
+            <th>Examples</th>
+            <th>By default</th>
+        </tr>
+        <tr>
+            <td><b>data</b></td>
+            <td>
+                handsontable option
+                <a href="https://github.com/handsontable/handsontable/wiki/Options" target="_blank">doc</a>
+
+            </td>
+            <td> [array of data objects]
+            </td>
+            <td class="descr">        var data = [<br />
+                { id: 4, name: {first: "Jim", last: "Left"}, address: "New Orlean", phone: "111-22-33", zip: "11223"},<br />
+                { id: 6, name: {first: "Ken", last: "Bites"}, address: "Texas", phone: "111-22-33", zip: "79382"}
+                ];
+            </td>
+            <td><b>Required</b></td>
+
+        </tr>
+
+
+
+        <tr>
+            <td><b>colHeaders</b></td>
+            <td>
+                handsontable option
+                <a href="https://github.com/handsontable/handsontable/wiki/Options" target="_blank">doc</a>
+            </td>
+            <td>
+                [array of column titles]
+            </td>
+            <td class="descr">
+            var colHeaders = ['Id', 'First name', 'Last name', 'Address' ,"ZIP"];
+            </td>
+            <td><b>Required</b></td>
+        </tr>
+        <tr>
+            <td>
+
+                <b>columns</b>
+
+            <td>
+                handsontable option
+                <a href="https://github.com/handsontable/handsontable/wiki/Options" target="_blank">doc</a>
+            </td>
+            <td>
+                [array of column objects]
+            </td>
+            <td class="descr">
+            var columns2 = [{data: "id"}, {data: "name.first"},   {data: "name.last"},  {data: "address"},  {data: "zip"} ];<br /><br />
+
+                column data can be<br />
+                (String): {data: "concept_id"}<br /><br />
+                (comma separated string): for nested object
+                {data: "donor.externalId"}  <br /><br />
+                (Function) with some calculation: then provide "xmlcol" param (String) <br />
+                {data: some function ,xmlcol: "concept_id"}<br />
+                <span style="font-size: 11px">xmlcol is used only for correct  CSV export</span>
+
+
+
+            </td>
+            <td>
+                <b>Required</b>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+
+                <br />
+                <b>xmlcol</b>  <br />
+                <b>visible</b> <br />
+                <b>hideFromToggle</b><br />
+
+
+            </td>
+            <td>
+                extra properties for every column in columns <br />
+                -- use if column data is not string <br />
+                -- if column initially visible<br />
+                -- if column hidden from toggler<br />
+
+            </td>
+            <td>
+                <br />
+                (String)<br />
+                (Bool)<br />
+                (Bool)
+
+            </td>
+            <td class="descr">
+
+
+            <br />Here checkbox is visible in table, but  hidden  from toggle option<br />
+                var columns = [{
+                data: "check",
+                type: "checkbox",
+                visible: true,
+                hideFromToggle: true
+                }, {
+                visible: true,
+                data: "id"
+                }]
+
+
+
+            </td>
+            <td>
+
+
+                <br />
+                <b>null</b> (gap in CSV) <br />
+                <b>false</b> (column hidden) <br />
+                <b>false</b> (column can be toggled) <br />
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>selectAll</b></td>
+            <td>
+                handsontable  controls option
+            </td>
+            <td>
+                boolean
+            </td>
+            <td class="descr">
+            true to select all columns
+            </td>
+            <td><b>false</b></td>
+        </tr>
+        <tr>
+            <td><b>controls</b></td>
+            <td>
+                handsontable  controls option
+            </td>
+            <td>
+                [array]
+            </td>
+            <td class="descr">
+            combination of "selector" , "export" and any HTML strings in any order
+            </td>
+            <td>
+                <b> ["selector" , "export"]</b>
+            </td>
+
+        </tr>
+
+
+        <tr>
+            <td><b>fileNamePrefix</b></td>
+            <td>
+                handsontable  controls option
+            </td>
+            <td>
+                String
+            </td>
+            <td class="descr">
+            Prefix of EXCEL generated
+            </td>
+            <td><b>'Table' + timestamp</b></td>
+        </tr>
+        <tr>
+            <td><b>targetEl</b></td>
+            <td>
+                handsontable  controls option
+            </td>
+            <td>
+                DOM ELEMENT
+            </td>
+            <td class="descr">
+            Set "targetEl" element for controls.
+                Like $("#my-el")
+            </td>
+            <td><b>before handsontable</b></td>
+        </tr>
+    </table>
+
+        <h3>Methods</h3>
+        <h2>onChange(silent)</h2>
+        <p>It is multiselect change handler, fires 'afterUpdate' event </p>
+        <p>Call it to emulates click multi multiselect change</p>
+        <p>pass silent = true to supress event</p>
+       <h2>getSelected()</h2>
+        <p>Returns an Array of currently selected column indexes</p>
+
+        <hr/>
+        <h3>Events</h3>
+
+        <p>afterUpdate</p>
+        <p>afterRender</p>
+        <p>afterResetColumns</p>
+
+
+    </div>
+    <div class="table" id="caniuse">
+        <div class="caniuse" data-feature="download"></div>
+        <!--<iframe width="100%" height="800" src="http://caniuse.com/#feat=download" allowfullscreen="allowfullscreen"-->
+                <!--frameborder="0"></iframe>-->
+    </div>
+
+
+    <div class="table" id="example1">
+        <p data-height="600" data-theme-id="0" data-slug-hash="QwMMzR"
+           data-default-tab="result" data-user="lev-savranskiy" class='codepen'>See the Pen <a href='http://codepen.io/lev-savranskiy/pen/QwMMzR/'>QwMMzR</a>
+            by Lev (<a href='http://codepen.io/lev-savranskiy'>@lev-savranskiy</a>) on <a href='http://codepen.io'>CodePen</a>.
+
+        </p>
+
+    </div>
+    <div class="table" id="example2">
+
+
+
+        <p data-height="700" data-theme-id="0" data-slug-hash="yyozBN"
+           data-default-tab="result" data-user="lev-savranskiy" class='codepen'>See the Pen <a href='http://codepen.io/lev-savranskiy/pen/yyozBN/'>yyozBN</a>
+            by Lev (<a href='http://codepen.io/lev-savranskiy'>@lev-savranskiy</a>) on <a href='http://codepen.io'>CodePen</a>.
+
+        </p>
+    </div>
+
+    <div class="table" id="faq">
+
+        <p>Q: how to set DOM for control?</p>
+
+        <p>A: By default, it created before handsontable DOM element. Use <b>"targetEl"</b> element if you wish to place
+            it in somewhere else.</p>
+        <hr/>
+        <p> Q: how select all columns if i cant modify data?</p>
+
+        <p> A: Use <b>"selectAll": true</b> option in config</p>
+        <hr/>
+
+        <p>Q: how to hide option in Selector?</p>
+
+        <p>A: use <b>"hideFromToggle": true</b> on every desired column</p>
+        <hr/>
+        <p>Q: how to hide one of controls?</p>
+
+        <p>A: select any combination of <b>"controls"</b> : <b>["selector" , "export"]</b></p>
+        <hr/>
+        <p>Q: what if i do not pass <b>"controls"</b> or config at all?</p>
+
+        <p>A: All controls shown</p>
+        <hr/>
+        <p> Q: how to add custom elements?</p>
+
+        <p> A: add HTML item(s) to <b>"controls"</b></p>
+        <hr/>
+         <p> Q: how is EXCEL generated?</p>
+
+        <p> A: By default it is <b>Table</b> plus current time. Like this: Table__12-01-2014_15-33_ALL.csv </p>
+        <hr/>
+
+        <p> Q: how to modify EXCEL file name?</p>
+
+        <p> A: Use <b>"fileNamePrefix"</b> option in config. </p>
+        <hr/>
+
+
+        <p> Q: how to use plugin functions?</p>
+        <p>  A: as  jQuery plugin $el.handsontableControls("name of function");
+            <br />example:   emulate  click multi selector   $el.handsontableControls("onChange");
+            <br />
+            $el is elemet where handsontable live </p>
+        <hr/>
+
+        <p> How to recreate handsontableControls if handsontable instance was destroyed / recreated?</p>
+
+
+            <pre>
+
+            //this = context
+            //$el = target Element
+            //handsontable instance might be already destroyed at the moment
+            this.instanceControls = null;
+            $el.handsontable(opts);
+
+            if (opts.colHeaders){
+
+                if (!!this.instanceControls){
+                    $el.handsontableControls("destroy");
+                }
+
+                this.instanceControls = $el.handsontableControls(opts);
+            }
+
+            </pre>
+
+
+    </div>
+
+    <div class="table" id="home">
+
+
+        <hr/>
+        <h2>Name</h2>
+
+        <p>Handsontable Controls Widget 0.1 </p>
+
+        <hr/>
+        <h2>Functionality</h2>
+
+        <p>Widget creates actions toolbar for  <a href="http://handsontable.com/" target="_blank">handsontable</a></p>
+
+        <p>1. Multiselect that allows to show/hide columns with dynamic text</p>
+
+        <p>2. Reset columns option (restore initial state of table)</p>
+
+        <p>3. Uncheck all columns option</p>
+
+        <p>4. Export to CSV (all/visible) (see <a href="#" onclick="showTabs(3)">CSV download support tab</a>)
+
+        </p>
+
+        <p>5. Any extra HTML elements of your choice</p>
+        <hr/>
+        <h2>Package</h2>
+
+        <p>Included in archive:</p>
+        <p>Handsontable Controls and Demo (this page)</p>
+        <p>erichynds multiselect (modified)</p>
+        <p>handsontable</p>
+        <p> <a href="hot-controls.zip" id="download">download</a></p>
+        <br/>
+
+        <p>Not included in archive:</p>
+
+        <p>jQuery 1.4.2+</p>
+        <p>jQuery UI 1.8+</p>
+
+        <hr/>
+
+
+        <h2>Links</h2>
+
+
+        <p>Discuss in <a href="https://groups.google.com/forum/#!topic/handsontable/VCDLiCxygwM">group</a></p>
+        <p>See <a href="http://wap7.ru/folio/">author`s portfolio</a></p>
+
+    </div>
+
+
+</div>
+<script>
+
+    function showTabs(active){
+        $("#tabs").tabs({
+            active: active,
+            heightStyle: "auto"
+        });
+    }
+
+    $(document).ready(function () {
+        showTabs(0);
+        $('#download').button()
+    })
+
+</script>
+<script async src="http://assets.codepen.io/assets/embed/ei.js"></script>
+<script src="caniuse-widget-master/js/caniuse.min.js"></script>
+
+</body>
+</html>
